@@ -7,6 +7,8 @@
   "files": [
     "build/codeflask.min.js",
     "build/codeflask.module.js",
+    "build/css/editor.min.css",
+    "build/css/theme-default.min.css",
     "README.md",
     "LICENSE"
   ],
