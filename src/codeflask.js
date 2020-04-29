@@ -37,10 +37,12 @@ export default class CodeFlask {
   }
 
   startEditor () {
-    const isCSSInjected = injectCss(editorCss, null, this.opts.styleParent)
+    if (!this.opts.csp) {
+      const isCSSInjected = injectCss(editorCss, null, this.opts.styleParent)
 
-    if (!isCSSInjected) {
-      throw Error('Failed to inject CodeFlask CSS.')
+      if (!isCSSInjected) {
+        throw Error('Failed to inject CodeFlask CSS.')
+      }
     }
 
     // The order matters (pre > code). Don't change it
@@ -131,7 +133,7 @@ export default class CodeFlask {
       this.createLineNumbers()
     }
 
-    if (this.opts.defaultTheme) {
+    if (this.opts.defaultTheme && !this.opts.csp) {
       injectCss(defaultCssTheme, 'theme-default', this.opts.styleParent)
     }
 

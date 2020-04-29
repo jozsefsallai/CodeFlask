@@ -11,7 +11,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && node -r esm bin/buildStaticCSS",
     "dev": "serve build & rollup -c -w",
     "start": "serve public",
     "pretest": "npm run build",
@@ -25,6 +25,8 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chromedriver": "^2.38.3",
+    "clean-css": "^4.2.3",
+    "esm": "^3.2.25",
     "micro": "^9.3.0",
     "mocha": "^5.1.1",
     "rollup": "^0.58.1",
